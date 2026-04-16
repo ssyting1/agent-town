@@ -103,7 +103,7 @@ for idx in range(8):
 
     label_poi = {
         "id": obj_id, "name": f"dept:{dept['name']}", "type": "label",
-        "x": ox_px - TILE // 2, "y": oy_px + (OH * TILE) // 2,
+        "x": ox_px + TILE, "y": oy_px + TILE // 2,
         "width": 0, "height": 0, "rotation": 0, "visible": True, "properties": [],
     }
     all_pois.append(label_poi)
@@ -122,11 +122,11 @@ for idx in range(8):
     obj_id += len(pois)
     all_pois.extend(pois)
 
-studio_ops_idx = 3
-studio_col = studio_ops_idx % COLS
-studio_row = studio_ops_idx // COLS
-boss_tx = 2 + studio_col * (OW + GAP_X) + OW // 2
-boss_ty = 2 + studio_row * (OH + GAP_Y) + OH // 2
+boss_office_idx = 7
+boss_col = boss_office_idx % COLS
+boss_row = boss_office_idx // COLS
+boss_tx = 2 + boss_col * (OW + GAP_X) + OW // 2
+boss_ty = 2 + boss_row * (OH + GAP_Y) + 2
 
 boss = {
     "id": obj_id, "name": "boss", "type": "",
