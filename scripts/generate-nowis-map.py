@@ -103,7 +103,7 @@ for idx in range(8):
 
     label_poi = {
         "id": obj_id, "name": f"dept:{dept['name']}", "type": "label",
-        "x": ox_px + (OW * TILE) // 2, "y": (oy + OH) * TILE + TILE,
+        "x": ox_px - TILE // 2, "y": oy_px + (OH * TILE) // 2,
         "width": 0, "height": 0, "rotation": 0, "visible": True, "properties": [],
     }
     all_pois.append(label_poi)
@@ -122,20 +122,17 @@ for idx in range(8):
     obj_id += len(pois)
     all_pois.extend(pois)
 
-boss_tx = MAP_W // 2
-boss_ty = 2 + OH + GAP_Y // 2
-
-desk_ground = {(0,-2): 356, (-1,-1): 680, (0,-1): 372, (1,-1): 682}
-for (dx, dy), tid in desk_ground.items():
-    bx, by = boss_tx + dx, boss_ty + dy
-    if 0 <= bx < MAP_W and 0 <= by < MAP_H:
-        combined_layers["ground"][by * MAP_W + bx] = tid
+studio_ops_idx = 3
+studio_col = studio_ops_idx % COLS
+studio_row = studio_ops_idx // COLS
+boss_tx = 2 + studio_col * (OW + GAP_X) + OW // 2
+boss_ty = 2 + studio_row * (OH + GAP_Y) + OH // 2
 
 boss = {
     "id": obj_id, "name": "boss", "type": "",
     "x": boss_tx * TILE, "y": boss_ty * TILE,
     "width": 0, "height": 0, "rotation": 0, "visible": True,
-    "properties": [{"name": "facing", "type": "string", "value": "up"}],
+    "properties": [{"name": "facing", "type": "string", "value": "down"}],
 }
 all_spawns.append(boss)
 obj_id += 1

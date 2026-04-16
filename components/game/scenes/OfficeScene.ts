@@ -182,7 +182,7 @@ export class OfficeScene extends Phaser.Scene {
             backgroundColor: "#3d5a80ee",
             padding: { x: 8, y: 4 },
           })
-          .setOrigin(0.5, 0)
+          .setOrigin(1, 0.5)
           .setDepth(50);
       }
     }
