@@ -103,7 +103,7 @@ for idx in range(8):
 
     label_poi = {
         "id": obj_id, "name": f"dept:{dept['name']}", "type": "label",
-        "x": ox_px + (OW * TILE) // 2, "y": oy_px - TILE,
+        "x": ox_px + (OW * TILE) // 2, "y": (oy + OH) * TILE + TILE,
         "width": 0, "height": 0, "rotation": 0, "visible": True, "properties": [],
     }
     all_pois.append(label_poi)

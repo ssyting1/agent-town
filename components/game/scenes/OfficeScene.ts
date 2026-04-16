@@ -176,12 +176,13 @@ export class OfficeScene extends Phaser.Scene {
         this.add
           .text(poi.x, poi.y, label, {
             fontFamily: '"Courier New", monospace',
-            fontSize: "10px",
-            color: "#98c1d9",
-            backgroundColor: "#0c121ccc",
-            padding: { x: 4, y: 2 },
+            fontSize: "18px",
+            fontStyle: "bold",
+            color: "#ffffff",
+            backgroundColor: "#3d5a80ee",
+            padding: { x: 8, y: 4 },
           })
-          .setOrigin(0.5, 1)
+          .setOrigin(0.5, 0)
           .setDepth(50);
       }
     }
