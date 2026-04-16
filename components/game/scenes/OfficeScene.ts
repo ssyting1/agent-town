@@ -170,6 +170,22 @@ export class OfficeScene extends Phaser.Scene {
 
     this.workerManager = new WorkerManager(this, workerSpawns, pois, pathfinder);
 
+    for (const poi of pois) {
+      if (poi.name.startsWith("dept:")) {
+        const label = poi.name.replace("dept:", "").replace(/-/g, " ").toUpperCase();
+        this.add
+          .text(poi.x, poi.y, label, {
+            fontFamily: '"Courier New", monospace',
+            fontSize: "10px",
+            color: "#98c1d9",
+            backgroundColor: "#0c121ccc",
+            padding: { x: 4, y: 2 },
+          })
+          .setOrigin(0.5, 1)
+          .setDepth(50);
+      }
+    }
+
     this.interactionManager = new InteractionManager(
       this,
       this.player,

@@ -101,6 +101,14 @@ for idx in range(8):
     ox_px = ox * TILE
     oy_px = oy * TILE
 
+    label_poi = {
+        "id": obj_id, "name": f"dept:{dept['name']}", "type": "label",
+        "x": ox_px + (OW * TILE) // 2, "y": oy_px - TILE,
+        "width": 0, "height": 0, "rotation": 0, "visible": True, "properties": [],
+    }
+    all_pois.append(label_poi)
+    obj_id += 1
+
     worker_spawns = offset_objects(orig_spawns, ox_px, oy_px, obj_id)
     obj_id += len(worker_spawns)
     for s in worker_spawns[:dept["count"]]:
@@ -114,9 +122,18 @@ for idx in range(8):
     obj_id += len(pois)
     all_pois.extend(pois)
 
+boss_tx = MAP_W // 2
+boss_ty = 2 + OH + GAP_Y // 2
+
+desk_ground = {(0,-2): 356, (-1,-1): 680, (0,-1): 372, (1,-1): 682}
+for (dx, dy), tid in desk_ground.items():
+    bx, by = boss_tx + dx, boss_ty + dy
+    if 0 <= bx < MAP_W and 0 <= by < MAP_H:
+        combined_layers["ground"][by * MAP_W + bx] = tid
+
 boss = {
     "id": obj_id, "name": "boss", "type": "",
-    "x": (MAP_W // 2) * TILE, "y": (2 + OH + GAP_Y // 2) * TILE,
+    "x": boss_tx * TILE, "y": boss_ty * TILE,
     "width": 0, "height": 0, "rotation": 0, "visible": True,
     "properties": [{"name": "facing", "type": "string", "value": "up"}],
 }
