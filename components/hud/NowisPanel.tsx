@@ -12,7 +12,15 @@ export default function NowisPanel() {
     return (
       <div className="nowis-panel nowis-panel--error">
         <div className="nowis-panel__title">NOWIS Swarm</div>
-        <div className="nowis-panel__body">connection error: {error}</div>
+        <div className="nowis-panel__body">
+          connection error: {error}
+          <br />
+          <small style={{ opacity: 0.6 }}>
+            url: {(process.env.NEXT_PUBLIC_SUPABASE_URL ?? "MISSING").slice(0, 25)}...
+            {" | "}
+            key: {(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "MISSING").slice(0, 10)}...
+          </small>
+        </div>
       </div>
     );
   }
