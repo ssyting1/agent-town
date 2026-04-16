@@ -14,6 +14,7 @@ const securityHeaders = [
       [
         "connect-src 'self'",
         "ws://localhost:* ws://127.0.0.1:* wss://localhost:* wss://127.0.0.1:*",
+        "https://*.supabase.co",
         extraConnectSrc,
       ]
         .filter(Boolean)
