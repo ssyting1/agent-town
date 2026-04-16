@@ -39,12 +39,21 @@ export interface WorkerSpriteConfig {
   label: string;
 }
 
-export const WORKER_SPRITES: WorkerSpriteConfig[] = [
-  { key: "character_02", path: "/characters/Premade_Character_48x48_02.png", label: "Alice" },
-  { key: "character_03", path: "/characters/Premade_Character_48x48_03.png", label: "Bob" },
-  { key: "character_04", path: "/characters/Premade_Character_48x48_04.png", label: "Carol" },
-  { key: "character_05", path: "/characters/Premade_Character_48x48_05.png", label: "Dave" },
+const BASE_SPRITES: WorkerSpriteConfig[] = [
+  { key: "character_01", path: "/characters/Premade_Character_48x48_01.png", label: "Agent" },
+  { key: "character_02", path: "/characters/Premade_Character_48x48_02.png", label: "Agent" },
+  { key: "character_03", path: "/characters/Premade_Character_48x48_03.png", label: "Agent" },
+  { key: "character_04", path: "/characters/Premade_Character_48x48_04.png", label: "Agent" },
+  { key: "character_05", path: "/characters/Premade_Character_48x48_05.png", label: "Agent" },
+  { key: "character_06", path: "/characters/Premade_Character_48x48_06.png", label: "Agent" },
+  { key: "character_09", path: "/characters/Premade_Character_48x48_09.png", label: "Agent" },
 ];
+
+export const WORKER_SPRITES: WorkerSpriteConfig[] = Array.from({ length: 49 }, (_, i) => ({
+  ...BASE_SPRITES[i % BASE_SPRITES.length],
+  key: `${BASE_SPRITES[i % BASE_SPRITES.length].key}_${i}`,
+  label: `Agent ${i + 1}`,
+}));
 
 const directions = ["right", "up", "left", "down"] as const;
 export type Direction = (typeof directions)[number];

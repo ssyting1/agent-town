@@ -58,7 +58,7 @@ export class OfficeScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.tilemapTiledJSON("office", "/maps/office2.json");
+    this.load.tilemapTiledJSON("office", "/maps/nowis-hq.json");
 
     this.load.once("filecomplete-tilemapJSON-office", () => {
       const cached = this.cache.tilemap.get("office");
