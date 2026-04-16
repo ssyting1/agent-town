@@ -8,6 +8,7 @@ import TerminalModal from "@/components/panel/TerminalModal";
 import WorkerSessionHistoryModal from "@/components/panel/WorkerSessionHistoryModal";
 import GameHud from "@/components/hud/GameHud";
 import NowisPanel from "@/components/hud/NowisPanel";
+import SwarmBridge from "@/components/SwarmBridge";
 
 const PhaserGame = dynamic(() => import("@/components/game/PhaserGame"), {
   ssr: false,
@@ -32,6 +33,7 @@ export default function Page() {
             <GameHud />
             <NowisPanel />
           </div>
+          <SwarmBridge />
           <TerminalModal />
           <WorkerSessionHistoryModal />
         </main>
