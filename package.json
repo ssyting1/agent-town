@@ -42,6 +42,7 @@
     "nextjs"
   ],
   "dependencies": {
+    "@supabase/supabase-js": "^2.103.2",
     "ws": "^8.19.0"
   },
   "devDependencies": {
@@ -53,6 +54,7 @@
     "@types/ws": "^8.18.1",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "eslint-formatter-compact": "^9.0.1",
     "husky": "^9",
     "lint-staged": "^15",
     "lucide-react": "^0.576.0",

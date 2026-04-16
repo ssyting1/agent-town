@@ -1,0 +1,86 @@
+/* NOWIS Swarm Panel — floating top-left, routes to NOWIS Command Center */
+
+.nowis-panel {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  min-width: 220px;
+  padding: 12px 14px;
+  background: rgba(12, 18, 28, 0.88);
+  border: 2px solid #3d5a80;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  color: #e0e6ed;
+  font-family: "Courier New", monospace;
+  pointer-events: auto;
+  z-index: 30;
+  image-rendering: pixelated;
+}
+
+.nowis-panel--error {
+  border-color: #a63d40;
+  background: rgba(32, 12, 18, 0.88);
+}
+
+.nowis-panel__title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #98c1d9;
+  margin-bottom: 10px;
+}
+
+.nowis-panel__stats {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.nowis-panel__stat {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.nowis-panel__stat-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ee6c4d;
+}
+
+.nowis-panel__stat--live .nowis-panel__stat-num {
+  color: #4ade80;
+}
+
+.nowis-panel__stat-label {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8896a6;
+  margin-top: 2px;
+}
+
+.nowis-panel__cta {
+  display: block;
+  padding: 8px 10px;
+  background: #3d5a80;
+  color: #f6f7f9;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background 0.12s ease;
+}
+
+.nowis-panel__cta:hover {
+  background: #4f7099;
+}
+
+.nowis-panel__body {
+  font-size: 10px;
+  color: #e0e6ed;
+}

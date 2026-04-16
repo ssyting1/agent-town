@@ -7,6 +7,7 @@ import { GameErrorBoundary } from "@/components/game/GameErrorBoundary";
 import TerminalModal from "@/components/panel/TerminalModal";
 import WorkerSessionHistoryModal from "@/components/panel/WorkerSessionHistoryModal";
 import GameHud from "@/components/hud/GameHud";
+import NowisPanel from "@/components/hud/NowisPanel";
 
 const PhaserGame = dynamic(() => import("@/components/game/PhaserGame"), {
   ssr: false,
@@ -29,6 +30,7 @@ export default function Page() {
           {/* HUD overlay — floating UI on top */}
           <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 20 }}>
             <GameHud />
+            <NowisPanel />
           </div>
           <TerminalModal />
           <WorkerSessionHistoryModal />
