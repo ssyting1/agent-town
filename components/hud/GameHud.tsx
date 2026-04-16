@@ -141,40 +141,7 @@ export default function GameHud() {
           seats={state.seats}
         />
 
-        {/* Spacer pushes chat to right */}
         <div style={{ flex: "1 1 auto" }} />
-
-        {/* Chat dock */}
-        <div className="hud-chat-dock">
-          {openPanel === "chat" && (
-            <div className="hud-chat-dock__panel">
-              <ChatPanel
-                messages={visibleMessages}
-                tasks={visibleTasks}
-                isConnected={state.connection === "connected"}
-                sessions={state.sessions}
-                activeSessionKey={state.activeSessionKey}
-              />
-            </div>
-          )}
-          <button
-            type="button"
-            className={`hud-chat-dock__btn ${openPanel === "chat" ? "hud-chat-dock__btn--active" : ""}`}
-            onClick={() => togglePanel("chat")}
-            title="Chat"
-          >
-            <img
-              src={
-                openPanel === "chat" ? "/ui/icons/icon-chat-active.png" : "/ui/icons/icon-chat.png"
-              }
-              alt="Chat"
-              width={28}
-              height={28}
-              style={{ imageRendering: "pixelated" }}
-            />
-            <span className="hud-chat-dock__label">Chat</span>
-          </button>
-        </div>
       </div>
 
       {/* Modals */}
