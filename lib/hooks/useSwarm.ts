@@ -38,24 +38,8 @@ export function useSwarm(): SwarmSnapshot {
 
     fetchInitial();
 
-    const channel = supabase
-      .channel("swarm-agents")
-      .on("postgres_changes", { event: "*", schema: "public", table: "agents" }, (payload) => {
-        if (payload.eventType === "INSERT" && payload.new) {
-          setAgents((prev) => [...prev, payload.new as SwarmAgent]);
-        } else if (payload.eventType === "UPDATE" && payload.new) {
-          setAgents((prev) =>
-            prev.map((a) => (a.id === payload.new.id ? (payload.new as SwarmAgent) : a)),
-          );
-        } else if (payload.eventType === "DELETE" && payload.old) {
-          setAgents((prev) => prev.filter((a) => a.id !== payload.old.id));
-        }
-      })
-      .subscribe();
-
     return () => {
       cancelled = true;
-      supabase.removeChannel(channel);
     };
   }, []);
 
