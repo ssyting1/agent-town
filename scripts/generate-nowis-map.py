@@ -11,8 +11,9 @@ OW, OH = original["width"], original["height"]  # 27 x 20
 
 COLS, ROWS = 4, 2
 GAP_X, GAP_Y = 3, 3
-MAP_W = COLS * OW + (COLS - 1) * GAP_X + 4  # 4 for margin
-MAP_H = ROWS * OH + (ROWS - 1) * GAP_Y + 6  # 6 for margin + boss area
+MAP_W = COLS * OW + (COLS - 1) * GAP_X + 4
+MAP_H = ROWS * OH + (ROWS - 1) * GAP_Y + 4
+CORRIDOR_FLOOR = 108
 
 DEPTS = [
     {"name": "marketing", "count": 10},
@@ -76,7 +77,10 @@ def offset_objects(objects, ox_px, oy_px, id_start):
 
 combined_layers = {}
 for name in TILE_LAYERS:
-    combined_layers[name] = [0] * (MAP_W * MAP_H)
+    if name == "floor":
+        combined_layers[name] = [CORRIDOR_FLOOR] * (MAP_W * MAP_H)
+    else:
+        combined_layers[name] = [0] * (MAP_W * MAP_H)
 
 all_spawns = []
 all_collisions = []
@@ -112,7 +116,7 @@ for idx in range(8):
 
 boss = {
     "id": obj_id, "name": "boss", "type": "",
-    "x": (MAP_W // 2) * TILE, "y": (MAP_H - 3) * TILE,
+    "x": (MAP_W // 2) * TILE, "y": (2 + OH + GAP_Y // 2) * TILE,
     "width": 0, "height": 0, "rotation": 0, "visible": True,
     "properties": [{"name": "facing", "type": "string", "value": "up"}],
 }
