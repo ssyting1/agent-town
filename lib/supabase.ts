@@ -1,5 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
+// Build-time inlined by Next.js. If Turbopack caches this module, env changes
+// require a source-level edit to bust the cache and trigger recompilation.
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
