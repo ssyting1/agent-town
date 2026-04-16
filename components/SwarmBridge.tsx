@@ -4,6 +4,15 @@ import { useEffect, useRef } from "react";
 import { useStudio } from "@/lib/store";
 import { useSwarm } from "@/lib/hooks/useSwarm";
 
+function shortLabel(name: string): string {
+  const words = name.split(/\s+/);
+  let pick = words[0];
+  if (pick.length <= 3 && words.length > 1) {
+    pick = words[words.length - 1];
+  }
+  return pick.length > 8 ? pick.slice(0, 7) + "." : pick;
+}
+
 export default function SwarmBridge() {
   const { state, updateSeatConfig } = useStudio();
   const { agents, loading } = useSwarm();
@@ -22,7 +31,7 @@ export default function SwarmBridge() {
       const agent = pool[i % pool.length];
       if (!agent) return;
       updateSeatConfig(seat.seatId, {
-        label: agent.name,
+        label: shortLabel(agent.name),
         roleTitle: agent.department,
       });
     });
